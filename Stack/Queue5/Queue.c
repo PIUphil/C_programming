@@ -30,12 +30,4 @@ void pop(Queue* pq, void* pData) {
     assert(pq->front != pq->size);
     memcpy(pData, (unsigned char*)pq->pArr + pq->front * pq->eleSize, pq->eleSize);
     ++pq->front;
-
-
-    /*assert(pq->front != 0);
-
-    --pq->front;
-
-    memcpy(pData, (unsigned char*)pq->pArr + pq->front * pq->eleSize, pq->eleSize);*/
-
 }
