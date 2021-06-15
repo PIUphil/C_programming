@@ -1,9 +1,9 @@
-### 함수 중복(function overloading)
+#### 함수 중복(function overloading)
 - for one-interface-multi-method
 - C언어는 똑같은 이름의 함수를 만들 수 없음
 - C++는 인자의 타입, 인자의 개수가 다르면 똑같은 이름의 함수 사용가능
 
-기본 인자(default argument)
+#### 기본 인자(default argument)
 - for one-interface-multi-method
 
 
@@ -14,21 +14,22 @@
 ```
 ```
 복사생성자는 인자를 전달할 때,
-반드시 레퍼런스를 사요앻야 한다.
+반드시 레퍼런스를 사용해야 한다.
 value로 넘기면 무한하게 복사생성자 호출됨
 ```
 
 ---
 
-const member func.
+#### const member func.
 상수 객체인 경우 호출할 수 있는 멤버 함수.
 
-const = 바뀌지않음 + read_only
-　　　　함수 뒤에 붙음
+#### const = 바뀌지않음 + read_only
+　　　　 함수 뒤에 붙음
 
-friend func.
+#### friend func.
 
-생성자 초기화 리스트(constructor initialization list)
+#### 생성자 초기화 리스트(constructor initialization list)
+   = 콜론초기화
 
 ---
 과제 - 유리수(rational number) -> rational class 
