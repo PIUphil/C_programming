@@ -50,6 +50,26 @@ Rational& Rational::operator+=(const Rational& rhs) {
 	return *this;
 }
 
+Rational& Rational::operator-=(const Rational& rhs) {
+	num_ = (num_ * rhs.den_ - den_ * rhs.num_);
+	den_ *= rhs.den_;
+	return *this;
+}
+
+Rational& Rational::operator*=(const Rational& rhs) {
+	num_ *= rhs.num_;
+	den_ *= rhs.den_;
+	return *this;
+}
+
+Rational& Rational::operator/=(const Rational& rhs) {
+	assert(rhs.num_ != 0.0);
+	num_ *= rhs.den_;
+	den_ *= rhs.num_;
+	return *this;
+}
+
+
 bool Rational::operator==(const Rational& rhs) const {
 	return (num_ * rhs.den_ == den_ * rhs.num_);
 }
@@ -57,6 +77,23 @@ bool Rational::operator==(const Rational& rhs) const {
 bool Rational::operator!=(const Rational& rhs) const {
 	return !operator==(rhs);
 }
+
+bool Rational::operator>(const Rational& rhs) const {
+	return (num_ * rhs.den_ > den_ * rhs.num_);
+}
+
+bool Rational::operator<(const Rational& rhs) const {
+	return (num_ * rhs.den_ < den_ * rhs.num_);
+}
+
+bool Rational::operator>=(const Rational& rhs) const {
+	return (num_ * rhs.den_ >= den_ * rhs.num_);
+}
+
+bool Rational::operator<=(const Rational& rhs) const {
+	return (num_ * rhs.den_ <= den_ * rhs.num_);
+}
+
 
 const Rational Rational::operator+(const Rational& rhs) const {
 	// a/A + b/B = (aB+Ab) / A*B
@@ -70,6 +107,17 @@ const Rational Rational::operator-(const Rational& rhs) const {
 	return result;
 }
 
+const Rational Rational::operator*(const Rational& rhs) const {
+	Rational result(num_ * rhs.num_, den_ * rhs.den_);
+	return result;
+}
+
+const Rational Rational::operator/(const Rational& rhs) const {
+	assert(rhs.num_ != 0.0);
+	Rational result(num_ * rhs.den_, den_ * rhs.num_);
+	return result;
+}
+
 
 Rational& Rational::operator++() {
 	num_ += den_;
@@ -79,6 +127,17 @@ Rational& Rational::operator++() {
 Rational Rational::operator++(int) {
 	Rational tmp(*this);
 	num_ += den_;
+	return tmp;
+}
+
+Rational& Rational::operator--() {
+	num_ -= den_;
+	return *this;
+}
+
+Rational Rational::operator--(int) {
+	Rational tmp(*this);
+	num_ -= den_;
 	return tmp;
 }
 
