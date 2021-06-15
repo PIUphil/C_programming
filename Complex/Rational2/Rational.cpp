@@ -2,10 +2,10 @@
 #include "Rational.h"
 
 
-int gcd(int a, int b) {								// ÃÖ´ë°ø¾à¼ö
+int gcd(int a, int b) {								// ìµœëŒ€ê³µì•½ìˆ˜
 	int c = (a % b == 0 ? b : gcd(b, a % b));
 	if (c < 0) c *= -1;
-	if (a * b == 0) c = 1;			// ³ª´©´Â ¼ö°¡ µÇ¹Ç·Î 1·Î ÁöÁ¤
+	if (a * b == 0) c = 1;			// ë‚˜ëˆ„ëŠ” ìˆ˜ê°€ ë˜ë¯€ë¡œ 1ë¡œ ì§€ì •
 	return c;
 }
 
@@ -17,10 +17,10 @@ int gcd(int a, int b) {								// ÃÖ´ë°ø¾à¼ö
 std::ostream& operator<<(std::ostream& out, Rational& rhs) {
 	if (rhs.den_ < 0) { rhs.num_ *= -1; rhs.den_ *= -1; }
 	int g = gcd(rhs.num_, rhs.den_);
-	rhs.num_ /= g;									// ±â¾àºÐ¼ö
+	rhs.num_ /= g;									// ê¸°ì•½ë¶„ìˆ˜
 	rhs.den_ /= g;
 
-	if (rhs.den_ == 1) out << rhs.num_;
+	if (rhs.den_ == 1 || rhs.num_==0) out << rhs.num_;
 	else out << rhs.num_ << "/" << rhs.den_;
 
 	return out;
