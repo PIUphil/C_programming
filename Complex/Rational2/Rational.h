@@ -28,6 +28,7 @@ public:
 	const Rational operator-(const Rational& rhs) const;
 	const Rational operator*(const Rational& rhs) const;
 	const Rational operator/(const Rational& rhs) const;
+	const Rational operator^(const int& n) const;
 
 	Rational& operator++();			// prefix
 	Rational operator++(int);		//post fix
@@ -35,8 +36,8 @@ public:
 	Rational operator--(int);
 
 	// get
-	double num() const;
-	double den() const;
+	int num() const;
+	int den() const;
 	// set
 	void num(int num);	
 	void den(int den);
