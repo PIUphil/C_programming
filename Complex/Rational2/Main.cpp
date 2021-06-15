@@ -2,7 +2,8 @@
 #include "Rational.h"
 
 int main() {
-	Rational r0;
+	Rational r00(2,3);
+	Rational r0 = r00^-1;
 	std::cout << "r0 : " << r0 << std::endl;
 
 	Rational r1(2, -3);
