@@ -2,7 +2,7 @@
 #include "Rational.h"
 
 
-int gcd(int a, int b) {								// 최대공약수
+int gcd(int a, int b) {								// 최대공약수 - 유클리드호제법(재귀호출)
 	int c = (a % b == 0 ? b : gcd(b, a % b));
 	if (c < 0) c *= -1;
 	if (a * b == 0) c = 1;			// 나누는 수가 되므로 1로 지정
@@ -39,34 +39,34 @@ Rational::~Rational() {}
 
 
 Rational& Rational::operator=(const Rational& rhs) {
-	this->num_ = rhs.num_;
-	this->den_ = rhs.den_;
+	num_ = rhs.num_;
+	den_ = rhs.den_;
 	return *this;
 }
 
 Rational& Rational::operator+=(const Rational& rhs) {
-	this->num_ = (this->num_ * rhs.den_ + this->den_ * rhs.num_);
-	this->den_ *= rhs.den_;
+	num_ = (num_ * rhs.den_ + den_ * rhs.num_);
+	den_ *= rhs.den_;
 	return *this;
 }
 
 bool Rational::operator==(const Rational& rhs) const {
-	return (this->num_ * rhs.den_ == this->den_ * rhs.num_);
+	return (num_ * rhs.den_ == den_ * rhs.num_);
 }
 
 bool Rational::operator!=(const Rational& rhs) const {
-	return !this->operator==(rhs);
+	return !operator==(rhs);
 }
 
 const Rational Rational::operator+(const Rational& rhs) const {
 	// a/A + b/B = (aB+Ab) / A*B
-	Rational result(this->num_ * rhs.den_ + this->den_ * rhs.num_, this->den_ * rhs.den_);
+	Rational result(num_ * rhs.den_ + den_ * rhs.num_,den_ * rhs.den_);
 	return result;
 }
 
 const Rational Rational::operator-(const Rational& rhs) const {
 	// a/A - b/B = (aB-Ab) / A*B
-	Rational result(this->num_ * rhs.den_ - this->den_ * rhs.num_, this->den_ * rhs.den_);
+	Rational result(num_ * rhs.den_ - den_ * rhs.num_, den_ * rhs.den_);
 	return result;
 }
 
@@ -86,5 +86,5 @@ Rational Rational::operator++(int) {
 double Rational::num() const { return num_; }
 double Rational::den() const { return den_; }
 
-void Rational::num(int num) { this->num_ = num; }
-void Rational::den(int den) { this->den_ = den; }
+void Rational::num(int num) { num_ = num; }
+void Rational::den(int den) { den_ = den; }
