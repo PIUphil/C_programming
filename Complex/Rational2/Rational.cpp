@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cassert>
 #include "Rational.h"
 
@@ -27,7 +28,7 @@ std::ostream& operator<<(std::ostream& out, Rational& rhs) {
 }
 
 Rational::Rational(int num, int den) {
-	assert(den != 0.0);
+	assert(den != 0);
 	if (den < 0) { num *= -1; den *= -1; }
 	num_ = num;
 	den_ = den;
@@ -63,7 +64,7 @@ Rational& Rational::operator*=(const Rational& rhs) {
 }
 
 Rational& Rational::operator/=(const Rational& rhs) {
-	assert(rhs.num_ != 0.0);
+	assert(rhs.num_ != 0);
 	num_ *= rhs.den_;
 	den_ *= rhs.num_;
 	return *this;
@@ -113,8 +114,28 @@ const Rational Rational::operator*(const Rational& rhs) const {
 }
 
 const Rational Rational::operator/(const Rational& rhs) const {
-	assert(rhs.num_ != 0.0);
+	assert(rhs.num_ != 0);
 	Rational result(num_ * rhs.den_, den_ * rhs.num_);
+	return result;
+}
+
+const Rational Rational::operator^(const int& n) const {
+	Rational result(1);
+	if (n == 0) return result;
+	else if (n == -1) {
+		result.num_ = den();	result.den_ = num();
+		return result;
+	}
+	else if (n < -1) {
+		std::cout << "아직 음수 제곱은 불가능합니다..." << std::endl;
+		return *this;
+	}
+
+	result.num_ = num();	result.den_ = den();
+	for (int i = 1; i < n; i++) {
+		result.num_ *= num_;
+		result.den_ *= den_;
+	}
 	return result;
 }
 
@@ -142,8 +163,8 @@ Rational Rational::operator--(int) {
 }
 
 
-double Rational::num() const { return num_; }
-double Rational::den() const { return den_; }
+int Rational::num() const { return num_; }
+int Rational::den() const { return den_; }
 
 void Rational::num(int num) { num_ = num; }
 void Rational::den(int den) { den_ = den; }
