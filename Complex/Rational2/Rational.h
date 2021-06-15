@@ -10,16 +10,29 @@ public:
 	Rational(const Rational& rhs);
 	~Rational();
 
-	// operator overloading ¿¬»êÀÚ Áßº¹
+	// operator overloading ì—°ì‚°ìž ì¤‘ë³µ
 	Rational& operator=(const Rational& rhs);
 	Rational& operator+=(const Rational& rhs);
+	Rational& operator-=(const Rational& rhs);
+	Rational& operator*=(const Rational& rhs);
+	Rational& operator/=(const Rational& rhs);
+
 	bool operator==(const Rational& rhs) const;
 	bool operator!=(const Rational& rhs) const;
+	bool operator>(const Rational& rhs) const;
+	bool operator<(const Rational& rhs) const;
+	bool operator>=(const Rational& rhs) const;
+	bool operator<=(const Rational& rhs) const;
+
 	const Rational operator+(const Rational& rhs) const;
 	const Rational operator-(const Rational& rhs) const;
+	const Rational operator*(const Rational& rhs) const;
+	const Rational operator/(const Rational& rhs) const;
 
 	Rational& operator++();			// prefix
 	Rational operator++(int);		//post fix
+	Rational& operator--();	
+	Rational operator--(int);
 
 	// get
 	double num() const;
@@ -29,5 +42,5 @@ public:
 	void den(int den);
 
 private:
-	int num_, den_;		// num: numerator ºÐÀÚ / den : denominator ºÐ¸ð
+	int num_, den_;		// num: numerator ë¶„ìž / den : denominator ë¶„ëª¨
 };
