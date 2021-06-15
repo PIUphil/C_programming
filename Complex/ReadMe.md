@@ -34,7 +34,7 @@ friend func.
 과제 - 유리수(rational number) -> rational class 
 　　　 분모,분자 = 정수 , 분모!=0
 
-
+```
 class Rational {
 public:
 	// ??
@@ -43,3 +43,4 @@ private:
 	int num;
 	int den;
 };
+```
