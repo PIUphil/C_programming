@@ -2,11 +2,11 @@
 
 class Rational {
 public:
-	Rational(double num = 0, double den = 1);		// num: numerator ºĞÀÚ / den : denominator ºĞ¸ğ
+	Rational(int num = 0, int den = 1);		// num: numerator ë¶„ì / den : denominator ë¶„ëª¨
 	Rational(const Rational& rhs);
 	~Rational();
 
-	// operator overloading ¿¬»êÀÚ Áßº¹
+	// operator overloading ì—°ì‚°ì ì¤‘ë³µ
 	Rational& operator=(const Rational& rhs);
 	bool operator==(const Rational& rhs);
 	const Rational operator+(const Rational& rhs);
@@ -15,9 +15,9 @@ public:
 	double num();
 	double den();
 	// set
-	void num(double num);	
-	void den(double den);
+	void num(int num);	
+	void den(int den);
 
 private:
-	double num_, den_;		// num: numerator ºĞÀÚ / den : denominator ºĞ¸ğ
+	int num_, den_;		// num: numerator ë¶„ì / den : denominator ë¶„ëª¨
 };
