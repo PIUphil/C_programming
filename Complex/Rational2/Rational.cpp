@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cassert>
 #include "Rational.h"
 
@@ -21,7 +20,7 @@ std::ostream& operator<<(std::ostream& out, Rational& rhs) {
 	rhs.num_ /= g;									// 기약분수
 	rhs.den_ /= g;
 
-	if (rhs.den_ == 1 || rhs.num_==0) out << rhs.num_;
+	if (rhs.den_ == 1 || rhs.num_ == 0) out << rhs.num_;
 	else out << rhs.num_ << "/" << rhs.den_;
 
 	return out;
@@ -34,7 +33,7 @@ Rational::Rational(int num, int den) {
 	den_ = den;
 }
 
-Rational::Rational(const Rational& rhs): num_(rhs.num_), den_(rhs.den_) {}
+Rational::Rational(const Rational& rhs) : num_(rhs.num_), den_(rhs.den_) {}
 
 Rational::~Rational() {}
 
@@ -84,7 +83,7 @@ bool Rational::operator>(const Rational& rhs) const {
 }
 
 bool Rational::operator<(const Rational& rhs) const {
-	return (num_ * rhs.den_ < den_ * rhs.num_);
+	return (num_ * rhs.den_ < den_* rhs.num_);
 }
 
 bool Rational::operator>=(const Rational& rhs) const {
@@ -98,7 +97,7 @@ bool Rational::operator<=(const Rational& rhs) const {
 
 const Rational Rational::operator+(const Rational& rhs) const {
 	// a/A + b/B = (aB+Ab) / A*B
-	Rational result(num_ * rhs.den_ + den_ * rhs.num_,den_ * rhs.den_);
+	Rational result(num_ * rhs.den_ + den_ * rhs.num_, den_ * rhs.den_);
 	return result;
 }
 
@@ -128,8 +127,15 @@ const Rational Rational::operator^(const int& n) const {
 		return result;
 	}
 	else if (n < -1) {
-		std::cout << "아직 음수 제곱은 불가능합니다..." << std::endl;
-		return *this;
+		result.num_ = num();	result.den_ = den();
+		for (int i = 1; i < (n*-1); i++) {
+			result.num_ *= num_;
+			result.den_ *= den_;
+		}
+		int tmp = result.num_;
+		result.num_ = result.den_;
+		result.den_ = tmp;
+		return result;		
 	}
 
 	result.num_ = num();	result.den_ = den();
