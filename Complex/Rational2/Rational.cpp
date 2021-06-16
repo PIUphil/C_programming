@@ -123,6 +123,7 @@ const Rational Rational::operator^(const int& n) const {
 	Rational result(1);
 	if (n == 0) return result;
 	else if (n == -1) {
+		assert(num() != 0);
 		result.num_ = den();	result.den_ = num();
 		return result;
 	}
