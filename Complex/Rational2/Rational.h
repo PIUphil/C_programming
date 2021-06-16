@@ -2,7 +2,6 @@
 #include <iostream>
 
 class Rational {
-	friend int gcd(int a, int b);
 	friend std::ostream& operator<<(std::ostream& out, Rational& rhs);
 
 public:
@@ -31,17 +30,19 @@ public:
 	const Rational operator^(const int& n) const;
 
 	Rational& operator++();			// prefix
-	Rational operator++(int);		//post fix
-	Rational& operator--();	
+	Rational operator++(int);		// post fix
+	Rational& operator--();
 	Rational operator--(int);
 
 	// get
 	int num() const;
 	int den() const;
+	int gcd(int a, int b);
 	// set
-	void num(int num);	
+	void num(int num);
 	void den(int den);
 
 private:
 	int num_, den_;		// num: numerator 분자 / den : denominator 분모
-};
+	int gcd_(int a, int b);
+}; 
