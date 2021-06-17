@@ -1,0 +1,27 @@
+﻿  Main.cpp
+D:\C++_Prograimming\c\SafeArray\Array2\Array.h(52,1): warning C4812: 사용되지 않는 선언 스타일입니다. 대신 'Array<T>::Array'을(를) 사용하십시오.
+D:\C++_Prograimming\c\SafeArray\Array2\Array.h(52,1): warning C4812: 사용되지 않는 선언 스타일입니다. 대신 'Array<int>::Array'을(를) 사용하십시오.
+D:\C++_Prograimming\c\SafeArray\Array2\Array.h(52): message : 클래스 템플릿 멤버 함수 'Array<int>::Array(const T *,int)'을(를) 컴파일하는 중입니다.
+          with
+          [
+              T=int
+          ]
+D:\C++_Prograimming\c\SafeArray\Array2\Main.cpp(6): message : 컴파일되는 함수 템플릿 인스턴스화 'Array<int>::Array(const T *,int)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=int
+          ]
+D:\C++_Prograimming\c\SafeArray\Array2\Main.cpp(6): message : 컴파일되는 클래스 템플릿 인스턴스화 'Array<int>'에 대한 참조를 확인하세요.
+D:\C++_Prograimming\c\SafeArray\Array2\Array.h(52,1): warning C4812: 사용되지 않는 선언 스타일입니다. 대신 'Array<double>::Array'을(를) 사용하십시오.
+D:\C++_Prograimming\c\SafeArray\Array2\Array.h(52): message : 클래스 템플릿 멤버 함수 'Array<double>::Array(const T *,int)'을(를) 컴파일하는 중입니다.
+          with
+          [
+              T=double
+          ]
+D:\C++_Prograimming\c\SafeArray\Array2\Main.cpp(13): message : 컴파일되는 함수 템플릿 인스턴스화 'Array<double>::Array(const T *,int)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=double
+          ]
+D:\C++_Prograimming\c\SafeArray\Array2\Main.cpp(13): message : 컴파일되는 클래스 템플릿 인스턴스화 'Array<double>'에 대한 참조를 확인하세요.
+  Array2.vcxproj -> D:\C++_Prograimming\c\SafeArray\Debug\Array2.exe
