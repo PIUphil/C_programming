@@ -8,20 +8,22 @@ SafeArray::SafeArray(int size): Array(size) {}
 
 SafeArray::SafeArray(const int* pArr, int size): Array(pArr, size) {}
 
-// SafeArray::SafeArray(const SafeArray& rhs): Array((Array)rhs) {}		// slicing. ºÎ¸ğ²¨ Çüº¯È¯..?
+// SafeArray::SafeArray(const SafeArray& rhs): Array((Array)rhs) {}		// slicing. ë¶€ëª¨êº¼ í˜•ë³€í™˜..?
 
 // SafeArray::~SafeArray() {}
 
 
 int& SafeArray::operator[](int index) {
 	// assert(index >= 0 && index < this->Array::size_);
-	//throw 1;			// ¹üÀ§¸¦ ¹ş¾î³µÀ» ¶§. 1À» ´øÁü....(±×³É Á¤ÇØÁØ°ÅÀÓ)
-	throw InvalidIndex(index);
+	//throw 1;			// ë²”ìœ„ë¥¼ ë²—ì–´ë‚¬ì„ ë•Œ. 1ì„ ë˜ì§....(ê·¸ëƒ¥ ì •í•´ì¤€ê±°ì„)
+	if (index < low_ || index >= upper())
+		throw InvalidIndex(index);
 	return this->Array::operator[](index);
 }
 const int& SafeArray::operator[](int index) const {
 	//assert(index >= 0 && index < this->Array::size_);
 	//throw 1;
-	throw InvalidIndex(index);
+	if (index < low_ || index >= upper())
+		throw InvalidIndex(index);
 	return this->Array::operator[](index);
 }
